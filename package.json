@@ -1,7 +1,7 @@
 {
   "name": "jp-postal-json",
-  "version": "0.1.0",
-  "description": "Japanese postal code utilities and future static JSON address lookup client.",
+  "version": "0.2.0",
+  "description": "TypeScript utilities and static JSON client for Japanese postal code address lookup.",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",

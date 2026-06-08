@@ -1,4 +1,14 @@
 export {
+  createPostalCodeClient,
+  lookupPostalCode
+} from "./client.js";
+export type {
+  LookupPostalCodeOptions,
+  PostalCodeClient,
+  PostalCodeClientOptions,
+  PostalCodeLookupOptions
+} from "./client.js";
+export {
   DEFAULT_DATA_BASE_URL,
   buildPostalCodeDataUrl,
   getPostalCodePrefix,
