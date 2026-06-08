@@ -21,7 +21,7 @@
   "sideEffects": false,
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/i2bskn/jp-postal-json.git"
+    "url": "git+https://github.com/i2bskn/jp-postal-json.git"
   },
   "homepage": "https://github.com/i2bskn/jp-postal-json#readme",
   "bugs": {
@@ -40,13 +40,14 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "lint": "tsc --noEmit",
-    "test": "npm run build && node --test tests/*.test.ts",
+    "test": "npm run build && tsc -p tsconfig.test.json && node --test .test-dist/*.test.js",
     "prepack": "npm run build"
   },
   "engines": {
     "node": ">=18"
   },
   "devDependencies": {
+    "@types/node": "^18.19.0",
     "typescript": "^5.9.3"
   }
 }

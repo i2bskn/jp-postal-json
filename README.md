@@ -91,12 +91,6 @@ This package is provided as-is, without any SLA.
 
 No warranty is made for accuracy, availability, continued operation, or fitness for a particular purpose. Future hosted JSON data should be mirrored or cached by users for production use.
 
-## Publishing Note
-
-This repository is currently private and this package has not been published to npm.
-
-`package.json` intentionally does not set `private: true` so the package can be published later. Before publishing, confirm the repository visibility, npm package ownership, package contents, version, README, license, and release process.
-
 ## License
 
 MIT
