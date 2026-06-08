@@ -1,0 +1,52 @@
+{
+  "name": "jp-postal-json",
+  "version": "0.1.0",
+  "description": "Japanese postal code utilities and future static JSON address lookup client.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/i2bskn/jp-postal-json.git"
+  },
+  "homepage": "https://github.com/i2bskn/jp-postal-json#readme",
+  "bugs": {
+    "url": "https://github.com/i2bskn/jp-postal-json/issues"
+  },
+  "license": "MIT",
+  "keywords": [
+    "japan",
+    "japanese",
+    "postal-code",
+    "zipcode",
+    "address",
+    "typescript",
+    "json"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "lint": "tsc --noEmit",
+    "test": "npm run build && node --test tests/*.test.ts",
+    "prepack": "npm run build"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}
