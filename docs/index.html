@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="jp-postal-json is a small TypeScript client for Japanese postal code address lookup."
+    >
+    <title>jp-postal-json | Japanese postal code lookup utilities</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./demo.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="jp-postal-json home">jp-postal-json</a>
+      <nav class="top-nav" aria-label="Primary navigation">
+        <a href="#install">Install</a>
+        <a href="#usage">Usage</a>
+        <a href="#demo">Demo</a>
+        <a href="#data">Data</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">TypeScript client for Japanese postal codes</p>
+          <h1>jp-postal-json</h1>
+          <p class="lead">A small TypeScript client for Japanese postal code address lookup.</p>
+          <p class="ja-lead">
+            日本の郵便番号から住所候補を取得するための、小さな TypeScript ライブラリです。
+          </p>
+          <div class="hero-actions" aria-label="Primary links">
+            <a class="button primary" href="https://www.npmjs.com/package/jp-postal-json">npm</a>
+            <a class="button secondary" href="https://github.com/i2bskn/jp-postal-json">GitHub</a>
+            <a class="button secondary" href="#demo">Demo</a>
+          </div>
+        </div>
+
+        <aside class="client-preview" aria-label="TypeScript client example">
+          <div class="preview-header">
+            <span>TypeScript</span>
+            <code>lookupPostalCode()</code>
+          </div>
+          <pre><code>import { lookupPostalCode } from "jp-postal-json";
+
+const addresses = await lookupPostalCode("100-0001");
+
+console.log(addresses[0]);
+// {
+//   prefecture: "東京都",
+//   city: "千代田区",
+//   town: "千代田"
+// }</code></pre>
+        </aside>
+      </section>
+
+      <section id="install" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Install</p>
+          <h2>Install from npm</h2>
+        </div>
+        <pre class="code-block"><code>npm install jp-postal-json</code></pre>
+      </section>
+
+      <section id="usage" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Usage</p>
+          <h2>Lookup from TypeScript</h2>
+        </div>
+        <div class="code-grid">
+          <div>
+            <h3>Convenience function</h3>
+            <pre class="code-block"><code>import { lookupPostalCode } from "jp-postal-json";
+
+const addresses = await lookupPostalCode("100-0001");</code></pre>
+          </div>
+          <div>
+            <h3>Reusable client</h3>
+            <pre class="code-block"><code>import { createPostalCodeClient } from "jp-postal-json";
+
+const client = createPostalCodeClient();
+const addresses = await client.lookup("100-0001");</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section id="demo" class="section demo-section">
+        <div class="section-heading">
+          <p class="eyebrow">Demo</p>
+          <h2>Try a postal code lookup</h2>
+          <p>
+            This demo uses the same hosted static data as the default client.
+          </p>
+        </div>
+
+        <form class="lookup-form" data-demo-form>
+          <label for="postal-code">Postal code</label>
+          <div class="lookup-controls">
+            <input
+              id="postal-code"
+              data-demo-input
+              name="postal-code"
+              inputmode="numeric"
+              autocomplete="postal-code"
+              placeholder="100-0001"
+              value="100-0001"
+            >
+            <button type="submit">Lookup</button>
+          </div>
+          <button class="text-button" type="button" data-demo-example>Use example: 100-0001</button>
+        </form>
+
+        <p class="demo-status" data-demo-status data-kind="neutral" aria-live="polite">
+          Enter a postal code and run lookup.
+        </p>
+        <div class="result-list" data-demo-result hidden></div>
+      </section>
+
+      <section id="data" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Hosted static data</p>
+          <h2>Static JSON data behind the client</h2>
+          <p>
+            By default, jp-postal-json uses hosted static JSON data. For production use,
+            consider caching, mirroring, or self-hosting the data depending on your requirements.
+          </p>
+          <p>
+            jp-postal-json は、デフォルトでは hosted static JSON data を参照します。
+            本番利用では、必要に応じてキャッシュ、ミラー、自社ホストを検討してください。
+          </p>
+        </div>
+        <div class="info-grid">
+          <div>
+            <h3>Client default</h3>
+            <ul>
+              <li>The package fetches prefix data internally when lookup is called.</li>
+              <li>The hosted data is an implementation detail of the default client.</li>
+              <li>Missing prefixes are treated as no data.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Self-hosting option</h3>
+            <ul>
+              <li>Prefix JSON data can be cached, mirrored, or self-hosted.</li>
+              <li>Use <code>baseUrl</code> when you operate your own static data host.</li>
+              <li>The hosted JSON cache is currently one hour.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Data source</h3>
+            <p>
+              Address data is based on public postal code data from Japan Post.
+              Metadata includes data update time, generation time, and record counts.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section warning-section">
+        <div class="section-heading">
+          <p class="eyebrow">Production use / No SLA</p>
+          <h2>Use hosted data carefully</h2>
+        </div>
+        <p>
+          jp-postal-json and its hosted static data are provided as-is. There is no SLA
+          and no warranty for availability, accuracy, continued operation, data freshness,
+          or fitness for a particular purpose.
+        </p>
+        <p>
+          For production use, consider cache, mirror, or self-hosting options when your
+          application has specific availability, latency, retention, or auditability
+          requirements. Treat hosted data as convenient default data, not as a guaranteed
+          production dependency.
+        </p>
+      </section>
+
+      <section class="section links-section">
+        <div class="section-heading">
+          <p class="eyebrow">Links</p>
+          <h2>Project resources</h2>
+        </div>
+        <div class="link-list">
+          <a href="https://www.npmjs.com/package/jp-postal-json">npm package</a>
+          <a href="https://github.com/i2bskn/jp-postal-json">GitHub repo</a>
+          <a href="#data">Hosted static data</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>MIT Licensed. Built for static hosting on GitHub Pages.</p>
+    </footer>
+  </body>
+</html>

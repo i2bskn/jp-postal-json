@@ -150,8 +150,21 @@ export type LookupPostalCodeOptions = PostalCodeClientOptions & PostalCodeLookup
 
 ## Roadmap
 
-- Cloudflare Pages demo
 - Monthly data update workflow
+
+## Website
+
+The documentation and browser demo site is planned for:
+
+https://jp-postal.com
+
+GitHub Pages setup:
+
+- Source: Deploy from a branch
+- Branch: `main`
+- Folder: `/docs`
+- Custom domain: `jp-postal.com`
+- Enforce HTTPS: enabled
 
 ## Data Source Note
 
